@@ -1,0 +1,12 @@
+import requests
+try:
+ api = "46470e13f9367fb02e401c145ca513a5"
+ user_input = input("enter city: ")
+ print(user_input)
+ weather_data = requests.get(f"https://api.openweathermap.org/data/2.5/weather?q={user_input}&units=imperial&APPID={api}")
+ weather = (weather_data.json()["weather"][0]["main"])
+ temp = round(weather_data.json()["main"]["temp"])
+ print(f"the weather in {user_input} is {weather}")
+ print(f"the temp in {user_input} is: {temp}°F")
+except KeyError:
+  print("please type in a city")
